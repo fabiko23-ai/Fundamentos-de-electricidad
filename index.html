@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electricidad Básica - Curso Virtual</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: #004aad;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #004aad;
+    }
+    button {
+      background: #004aad;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0066ff;
+    }
+    .resultado {
+      font-weight: bold;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .correcto {
+      background: #d4edda;
+      color: #155724;
+    }
+    .incorrecto {
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Curso de Electricidad Básica</h1>
+    <p>Conceptos fundamentales y evaluación interactiva</p>
+  </header>
+
+  <main>
+    <!-- Contenido educativo -->
+    <section>
+      <h2>⚡ Conceptos básicos</h2>
+      <p>
+        La electricidad es un fenómeno físico originado por cargas eléctricas en reposo o en movimiento. 
+        Los principales conceptos son:
+      </p>
+      <ul>
+        <li><b>Corriente eléctrica:</b> flujo de electrones a través de un material conductor.</li>
+        <li><b>Voltaje:</b> diferencia de potencial eléctrico entre dos puntos.</li>
+        <li><b>Resistencia:</b> oposición al paso de la corriente eléctrica, medida en ohmios (Ω).</li>
+        <li><b>Ley de Ohm:</b> establece la relación entre voltaje, corriente y resistencia: V = I × R.</li>
+      </ul>
+    </section>
+
+    <!-- Evaluación -->
+    <section>
+      <h2>📝 Evaluación</h2>
+      <form id="quizForm">
+        <p><b>1. ¿Qué unidad se utiliza para medir la corriente eléctrica?</b></p>
+        <label><input type="radio" name="q1" value="incorrecto"> Voltios</label><br>
+        <label><input type="radio" name="q1" value="correcto"> Amperios</label><br>
+        <label><input type="radio" name="q1" value="incorrecto"> Ohmios</label><br><br>
+
+        <p><b>2. Según la Ley de Ohm, ¿cómo se calcula la corriente?</b></p>
+        <label><input type="radio" name="q2" value="correcto"> I = V / R</label><br>
+        <label><input type="radio" name="q2" value="incorrecto"> I = R / V</label><br>
+        <label><input type="radio" name="q2" value="incorrecto"> I = V × R</label><br><br>
+
+        <p><b>3. ¿Cuál de los siguientes materiales es un buen conductor eléctrico?</b></p>
+        <label><input type="radio" name="q3" value="correcto"> Cobre</label><br>
+        <label><input type="radio" name="q3" value="incorrecto"> Madera</label><br>
+        <label><input type="radio" name="q3" value="incorrecto"> Plástico</label><br><br>
+
+        <button type="button" onclick="calificar()">Enviar respuestas</button>
+      </form>
+      <div id="resultado" class="resultado"></div>
+    </section>
+  </main>
+
+  <script>
+    function calificar() {
+      let correctas = 0;
+      const total = 3;
+      const respuestas = document.querySelectorAll('input[type="radio"]:checked');
+      
+      respuestas.forEach(r => {
+        if (r.value === "correcto") correctas++;
+      });
+
+      const resultado = document.getElementById("resultado");
+      if (correctas === total) {
+        resultado.innerHTML = `✅ ¡Excelente! Has respondido correctamente todas las preguntas. (${correctas}/${total})`;
+        resultado.className = "resultado correcto";
+      } else {
+        resultado.innerHTML = `⚠️ Has obtenido ${correctas} de ${total} respuestas correctas. ¡Sigue repasando!`;
+        resultado.className = "resultado incorrecto";
+      }
+    }
+  </script>
+</body>
+</html>
